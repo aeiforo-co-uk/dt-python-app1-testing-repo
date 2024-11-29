@@ -7,7 +7,7 @@ on:
 
 jobs:
   run_pipeline:
-    uses: aeiforo-co-uk/python-pipeline-module/.github/workflows/python_pipeline.yml@feature/DD-20
+    uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python_pipeline.yml@feature/DD-20
     with:
       repo_name: "dt-module-python-pipeline-repo"
       deploy_env: "DEV"
