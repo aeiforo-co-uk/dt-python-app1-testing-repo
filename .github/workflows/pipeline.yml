@@ -11,5 +11,5 @@ jobs:
     with:
       repo_name: "dt-python-app1-testing-repo"
       deploy_env: "DEV"
-      build_artifacts: true
+      build_artifacts: false
       python_version: "3.9"
