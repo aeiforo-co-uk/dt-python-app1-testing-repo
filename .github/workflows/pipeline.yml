@@ -1,5 +1,15 @@
+name: Use Python CI/CD Pipeline
+
 on:
   push:
     branches:
       - feature/demo-testing
-  workflow_dispatch: {}
+
+jobs:
+  run_pipeline:
+    uses: aeiforo-co-uk/python-pipeline-module/.github/workflows/python_pipeline.yml@main
+    with:
+      repo_name: "dt-module-python-pipeline-repo"
+      deploy_env: "DEV"
+      build_artifacts: true
+      python_version: "3.9"
