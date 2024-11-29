@@ -3,11 +3,11 @@ name: Use Python CI/CD Pipeline
 on:
   push:
     branches:
-      - feature/demo-testing
+      - feature/demo-testing  # Trigger the workflow on push to this branch
 
 jobs:
   run_pipeline:
-    uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python_pipeline.yml@feature/DD-20
+    uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python_pipeline.yml@feature/DD-20/pipeline/python  # Correct branch path
     with:
       repo_name: "dt-python-app1-testing-repo"
       deploy_env: "DEV"
