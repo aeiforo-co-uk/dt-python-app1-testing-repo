@@ -9,7 +9,7 @@ jobs:
   run_pipeline:
     uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python_pipeline.yml@feature/DD-20
     with:
-      repo_name: "dt-module-python-pipeline-repo"
+      repo_name: "dt-python-app1-testing-repo"
       deploy_env: "DEV"
       build_artifacts: true
       python_version: "3.9"
