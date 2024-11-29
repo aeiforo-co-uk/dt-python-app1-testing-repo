@@ -1,0 +1,29 @@
+name: Use Python CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - feature/demo-testing
+  workflow_dispatch:
+    inputs:
+      repo_name:
+        description: 'Repository Name'
+        required: true
+      deploy_env:
+        description: 'Deployment Environment'
+        required: true
+      build_artifacts:
+        description: 'Build Artifacts (true/false)'
+        required: true
+      python_version:
+        description: 'Python Version'
+        required: true
+
+jobs:
+  run_pipeline:
+    uses: aeiforo-co-uk/python-pipeline-module/.github/workflows/python_pipeline.yml@main
+    with:
+      repo_name: ${{ github.event.inputs.repo_name }}
+      deploy_env: ${{ github.event.inputs.deploy_env }}
+      build_artifacts: ${{ github.event.inputs.build_artifacts }}
+      python_version: ${{ github.event.inputs.python_version }}
