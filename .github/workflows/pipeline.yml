@@ -1,15 +1,12 @@
 name: Call Python CI/CD Pipeline
 
 on:
-  push:
-    branches:
-      - feature/demo-testing
   workflow_dispatch:
 
 jobs:
   call-shared-workflow:
     name: Reuse Python Pipeline
-    uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python-pipeline.yaml@feature/DD-20
+    uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python-pipeline.yaml@main
     with:
       repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
       deploy_env: 'staging'
