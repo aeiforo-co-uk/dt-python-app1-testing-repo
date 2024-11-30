@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  call-shared-workflow:
+  call-reusable-workflow:
     name: Reuse Python Pipeline
-    uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python-pipeline.yaml@main
+    uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python-pipeline.yml@main
     with:
       repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
       deploy_env: 'staging'
