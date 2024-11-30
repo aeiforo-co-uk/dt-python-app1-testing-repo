@@ -1,15 +1,18 @@
-name: Use Python CI/CD Pipeline
+name: Call Python CI/CD Pipeline
 
 on:
   push:
     branches:
-      - feature/demo-testing  # Trigger the workflow on push to this branch
+      - feature/demo-testing
+  workflow_dispatch:
 
 jobs:
-  run_pipeline:
-    uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python_pipeline.yml@feature/DD-20/pipeline/python  # Correct branch path
+  call-shared-workflow:
+    name: Reuse Python Pipeline
+    uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python-pipeline.yaml@feature/DD-20
     with:
-      repo_name: "dt-python-app1-testing-repo"
-      deploy_env: "DEV"
+      repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
+      deploy_env: 'staging'
       build_artifacts: true
-      python_version: "3.9"
+      python_version: '3.9'
+    secrets: inherit
