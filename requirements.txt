@@ -5,4 +5,5 @@ pytest==7.4.2
 pytest
 fastapi
 uvicorn
+flask
 
