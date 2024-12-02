@@ -10,6 +10,6 @@ jobs:
     with:
       repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
       deploy_env: 'deploy'  # Example environment
-      build_artifacts: false
+      build_artifacts: true
       python_version: '3.9'  # Example version
     secrets: inherit
