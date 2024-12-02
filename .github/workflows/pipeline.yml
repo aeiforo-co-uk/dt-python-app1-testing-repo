@@ -9,7 +9,7 @@ jobs:
     uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python-pipeline.yml@main  # Ensure you reference the correct branch (main)
     with:
       repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
-      deploy_env: 'staging'  # Example environment
+      deploy_env: 'devploy'  # Example environment
       build_artifacts: true
       python_version: '3.9'  # Example version
     secrets: inherit
