@@ -1,14 +1,14 @@
-from flask import Flask, jsonify
+# Original Flask imports (incorrect for FastAPI)
+# from flask import Flask, jsonify
 
-app = Flask(__name__)
+# Correct FastAPI imports
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 
-@app.route('/')
-def home():
-    return jsonify({"message": "Welcome to the Python CI/CD Pipeline Template API!"})
+# Create FastAPI app
+app = FastAPI(debug=True)
 
-@app.route('/status')
-def status():
-    return jsonify({"status": "Running", "version": "1.0.0"})
+@app.get("/")
+def read_root():
+    return {"message": "Hello, World!"}
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
