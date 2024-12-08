@@ -4,16 +4,13 @@ from flask import Flask
 app = Flask(__name__)
 swagger = Swagger(app)
 
-@app.route('/hello', methods=['GET'])
-def hello():
+@app.route('/api')
+def api():
     """
-    A simple Hello World endpoint
+    An example API endpoint.
     ---
     responses:
       200:
-        description: Returns a Hello message
+        description: Returns an example API response
     """
-    return "Hello World!"
-
-if __name__ == '__main__':
-    app.run()
+    return "Hello, World!"
