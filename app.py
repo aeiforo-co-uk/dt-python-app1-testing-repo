@@ -1,6 +1,4 @@
-# app.py
-def generate_swagger():
-    print("Swagger generation logic here")
+from generate_swagger import generate_swagger_function  # Replace with the correct function name
 
 if __name__ == "__main__":
-    generate_swagger()
+    generate_swagger_function()  # Call the function
