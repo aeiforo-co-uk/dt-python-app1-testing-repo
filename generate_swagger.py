@@ -1,16 +1,24 @@
+import os
 from flasgger import Swagger
 from flask import Flask
 
+# Create Flask app
 app = Flask(__name__)
-swagger = Swagger(app)
+Swagger(app)
 
-@app.route('/api')
-def api():
+@app.route('/api/example', methods=['GET'])
+def example_endpoint():
     """
-    An example API endpoint.
+    Example Endpoint
     ---
     responses:
       200:
-        description: Returns an example API response
+        description: A successful response
     """
-    return "Hello, World!"
+    return {"message": "Success"}, 200
+
+# Generate Swagger files
+os.makedirs("swagger", exist_ok=True)
+with open("swagger/swagger.json", "w") as f:
+    f.write(app.openapi_json)
+print("Swagger documentation generated!")
