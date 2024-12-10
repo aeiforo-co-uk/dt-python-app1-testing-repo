@@ -1,3 +1,8 @@
+import sys
+import os
+# Add the parent directory to the Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import unittest
 from app import add, subtract
 
@@ -13,5 +18,5 @@ class TestApp(unittest.TestCase):
         self.assertEqual(subtract(-2, -1), -1)
         self.assertEqual(subtract(0, 0), 0)
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     unittest.main()
