@@ -1,10 +1,11 @@
 # requirement.txt files
 
-Flask==2.3.3
+
 pytest==7.4.2
 pytest
 fastapi
 uvicorn
 flask
-flasgger==0.9.5
+Flask==2.2.3
+Flasgger==0.9.5
 
