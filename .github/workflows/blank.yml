@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - feature/demo-testing
+  workflow_dispatch:  # Allows manual trigger via GitHub UI
 
 jobs:
   test:
@@ -25,12 +26,14 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
     - name: Check for Unittest files
       run: |
         if [ -z "$(find tests -type f -name 'test_*.py' -exec grep -l 'unittest' {} +)" ]; then
           echo "No Unittest files found."
           exit 1
         fi
+
     - name: Run unit tests
       env:
         PYTHONPATH: ./src
@@ -42,6 +45,7 @@ jobs:
           echo "No Pytest files found."
           exit 1
         fi
+
     - name: Run pytest
       env:
         PYTHONPATH: ./src
