@@ -4,28 +4,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup-and-call-reusable-workflow:
-    name: Setup and Reuse Python Pipeline
-    runs-on: ubuntu-latest
-    steps:
-      # Step to configure SSH access
-      - name: Configure SSH Access for Private Repo
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.MODULE_DEPLOY_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-      # Step to ensure the calling repo is checked out
-      - name: Checkout Calling Repository
-        uses: actions/checkout@v3
-
-      # Step to call the reusable workflow
-      - name: Call Reusable Workflow
-        uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python-pipeline.yml@main
-        with:
-          repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
-          deploy_env: 'staging'
-          build_artifacts: true
-          python_version: '3.9'
-        secrets: inherit
+  call-reusable-workflow:
+    name: Reuse Python Pipeline
+    uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python-pipeline.yml@main  # Ensure you reference the correct branch (main)
+    with:
+      repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
+      deploy_env: 'dev'  # Example environment
+      build_artifacts: true
+      python_version: '3.9'  # Example version
+    secrets: inherit
