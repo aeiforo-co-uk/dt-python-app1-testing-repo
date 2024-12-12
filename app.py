@@ -221,5 +221,5 @@ def get_book_request(book_request_id):
         return jsonify(book_request), 200
     return jsonify({"status": "Book request not found"}), 404
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5001, debug=True)
