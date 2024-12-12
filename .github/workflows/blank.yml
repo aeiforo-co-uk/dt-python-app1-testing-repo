@@ -1,0 +1,16 @@
+name: Call Python CI/CD Pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-reusable-workflow:
+    name: Reuse Python Pipeline
+    uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python-pipeline.yml@main  # Ensure you reference the correct branch (main)
+    with:
+      repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
+      branch_name: 'development'  # Specify the development branch
+      deploy_env: 'dev'  # Example environment
+      build_artifacts: true
+      python_version: '3.9'  # Example version
+    secrets: inherit
