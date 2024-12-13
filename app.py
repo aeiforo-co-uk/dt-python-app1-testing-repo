@@ -32,7 +32,7 @@ def swagger_spec():
             "/api/bookrequests": {
                 "post": {
                     "summary": "Create a new book request",
-                    "description": "Add a book request to the list.",
+                    "description": "Add a books request to the list.",
                     "parameters": [
                         {
                             "in": "body",
