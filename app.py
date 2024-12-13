@@ -3,7 +3,7 @@ from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__)
 
-# In-memory storage for book requests
+# In-memory storage for book reques
 book_requests = []
 
 # Swagger UI setup
