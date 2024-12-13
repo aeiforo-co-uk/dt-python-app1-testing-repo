@@ -15,3 +15,5 @@ jobs:
       build_artifacts: true
       python_version: '3.9'       # Example version
     secrets: inherit
+    permissions:
+      contents: write
