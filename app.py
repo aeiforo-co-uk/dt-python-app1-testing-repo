@@ -121,7 +121,7 @@ def create_book_requests():
     """
     data = request.get_json()
     if not isinstance(data, list):
-        return jsonify({"error": "Input should be a list of book requests"}), 400
+        return jsonify({"error": "Input should be a lists of book requests"}), 400
 
     for book_request in data:
         if 'id' not in book_request or 'username' not in book_request or 'email' not in book_request:
