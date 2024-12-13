@@ -137,7 +137,7 @@ def get_book_requests():
     Handles GET requests to retrieve book requests, with optional filters.
     """
     id_filter = request.args.get('id')
-    username_filter = request.args.get('username')
+    username_filter = request.args.get('Username')
     email_filter = request.args.get('email')
 
     # Filter the book_requests based on query parameters
