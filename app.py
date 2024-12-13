@@ -5,7 +5,7 @@ import uuid
 app = Flask(__name__)
 swagger = Swagger(app)
 
-# Simulate a simple in-memory database for the book requests
+# Simulated in-memory database for book requests
 book_requests_db = {}
 
 @app.route('/api/bookrequests', methods=['POST'])
@@ -16,7 +16,7 @@ def create_book_request():
     tags:
       - Book Request Service
     requestBody:
-      description: Request body for creating a new book request
+      description: Provide the details of the book request
       required: true
       content:
         application/json:
