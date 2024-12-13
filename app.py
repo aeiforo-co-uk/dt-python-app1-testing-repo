@@ -1,4 +1,114 @@
-             }
+from flask import Flask, request, jsonify
+from flask_swagger_ui import get_swaggerui_blueprint
+
+app = Flask(__name__)
+
+# In-memory storage for book requests
+book_requests = []
+
+# Swagger UI setup
+SWAGGER_URL = '/apidocs'
+API_URL = '/swagger.json'
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "Book Request API"
+    }
+)
+app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
+
+
+@app.route('/swagger.json')
+def swagger_spec():
+    return jsonify({
+        "swagger": "2.0",
+        "info": {
+            "title": "Book Request API",
+            "version": "1.0"
+        },
+        "paths": {
+            "/api/bookrequests": {
+                "post": {
+                    "summary": "Create a new book request",
+                    "description": "Add a book request to the list.",
+                    "parameters": [
+                        {
+                            "in": "body",
+                            "name": "body",
+                            "required": True,
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {"type": "integer"},
+                                        "username": {"type": "string"},
+                                        "firstName": {"type": "string"},
+                                        "lastName": {"type": "string"},
+                                        "email": {"type": "string"},
+                                        "password": {"type": "string"},
+                                        "phone": {"type": "string"},
+                                        "userStatus": {"type": "integer"}
+                                    },
+                                    "required": ["id", "username", "email"]
+                                }
+                            },
+                            "description": "List of book requests to be added."
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Book request created successfully",
+                            "schema": {"type": "string"}
+                        }
+                    }
+                },
+                "get": {
+                    "summary": "Get book requests",
+                    "description": "Retrieve all book requests or filter by query parameters.",
+                    "parameters": [
+                        {
+                            "in": "query",
+                            "name": "id",
+                            "type": "integer",
+                            "description": "Filter by ID"
+                        },
+                        {
+                            "in": "query",
+                            "name": "username",
+                            "type": "string",
+                            "description": "Filter by username"
+                        },
+                        {
+                            "in": "query",
+                            "name": "email",
+                            "type": "string",
+                            "description": "Filter by email"
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "List of book requests",
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {"type": "integer"},
+                                        "username": {"type": "string"},
+                                        "firstName": {"type": "string"},
+                                        "lastName": {"type": "string"},
+                                        "email": {"type": "string"},
+                                        "password": {"type": "string"},
+                                        "phone": {"type": "string"},
+                                        "userStatus": {"type": "integer"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     })
@@ -44,3 +154,4 @@ def get_book_requests():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
