@@ -108,6 +108,63 @@ def swagger_spec():
                             }
                         }
                     }
+                },
+                "put": {
+                    "summary": "Update an existing book request",
+                    "description": "Update a book request by ID.",
+                    "parameters": [
+                        {
+                            "in": "body",
+                            "name": "body",
+                            "required": True,
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {"type": "integer"},
+                                    "username": {"type": "string"},
+                                    "firstName": {"type": "string"},
+                                    "lastName": {"type": "string"},
+                                    "email": {"type": "string"},
+                                    "password": {"type": "string"},
+                                    "phone": {"type": "string"},
+                                    "userStatus": {"type": "integer"}
+                                },
+                                "required": ["id"]
+                            },
+                            "description": "Book request data to update."
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Book request updated successfully",
+                            "schema": {"type": "string"}
+                        },
+                        "404": {
+                            "description": "Book request not found"
+                        }
+                    }
+                },
+                "delete": {
+                    "summary": "Delete a book request",
+                    "description": "Delete a book request by ID.",
+                    "parameters": [
+                        {
+                            "in": "query",
+                            "name": "id",
+                            "type": "integer",
+                            "required": True,
+                            "description": "ID of the book request to delete"
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Book request deleted successfully",
+                            "schema": {"type": "string"}
+                        },
+                        "404": {
+                            "description": "Book request not found"
+                        }
+                    }
                 }
             }
         }
@@ -137,7 +194,7 @@ def get_book_requests():
     Handles GET requests to retrieve book requests, with optional filters.
     """
     id_filter = request.args.get('id')
-    username_filter = request.args.get('Username')
+    username_filter = request.args.get('username')
     email_filter = request.args.get('email')
 
     # Filter the book_requests based on query parameters
@@ -150,6 +207,38 @@ def get_book_requests():
         filtered_requests = [br for br in filtered_requests if br.get('email') == email_filter]
 
     return jsonify(filtered_requests), 200
+
+
+@app.route('/api/bookrequests', methods=['PUT'])
+def update_book_request():
+    """
+    Handles PUT requests to update an existing book request.
+    """
+    data = request.get_json()
+    if not isinstance(data, dict) or 'id' not in data:
+        return jsonify({"error": "A valid book request with an 'id' is required."}), 400
+
+    for book_request in book_requests:
+        if book_request['id'] == data['id']:
+            book_request.update(data)
+            return jsonify({"message": "Book request updated successfully"}), 200
+
+    return jsonify({"error": "Book request not found"}), 404
+
+
+@app.route('/api/bookrequests', methods=['DELETE'])
+def delete_book_request():
+    """
+    Handles DELETE requests to remove a book request by ID.
+    """
+    id_filter = request.args.get('id')
+    if not id_filter:
+        return jsonify({"error": "ID parameter is required."}), 400
+
+    global book_requests
+    book_requests = [br for br in book_requests if str(br.get('id')) != id_filter]
+
+    return jsonify({"message": "Book request deleted successfully"}), 200
 
 
 if __name__ == "__main__":
