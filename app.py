@@ -27,6 +27,7 @@ def swagger_spec():
             "title": "Swagger API Testing",
             "version": "v1.0.1"
         },
+        "schemes": ["http", "https"],
         "paths": {
             "/api/bookrequests": {
                 "post": {
