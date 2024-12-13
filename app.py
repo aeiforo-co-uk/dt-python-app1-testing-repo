@@ -13,7 +13,7 @@ swaggerui_blueprint = get_swaggerui_blueprint(
     SWAGGER_URL,
     API_URL,
     config={
-        'app_name': "Book Request API"
+        'app_name': "Swagger API Testing"
     }
 )
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
@@ -24,8 +24,8 @@ def swagger_spec():
     return jsonify({
         "swagger": "2.0",
         "info": {
-            "title": "Book Request API",
-            "version": "1.0"
+            "title": "Swagger API Testing",
+            "version": "v1.0.1"
         },
         "paths": {
             "/api/bookrequests": {
