@@ -60,7 +60,7 @@ def swagger_spec():
                     ],
                     "responses": {
                         "200": {
-                            "description": "Book request created successfully",
+                            "description": "Book requests created successfully",
                             "schema": {"type": "string"}
                         }
                     }
