@@ -11,9 +11,18 @@ jobs:
     uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python-pipeline.yml@main
     with:
       repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
-      deploy_env: 'staging'       # Example environment
+      deploy_env: 'staging'
       build_artifacts: true
-      python_version: '3.9'       # Example version
+      python_version: '3.9'
     secrets: inherit
     permissions:
       contents: write
+
+  check-and-deploy:
+    name: Check Deployment Status
+    needs: call-reusable-workflow
+    runs-on: ubuntu-latest
+    if: ${{ needs.call-reusable-workflow.outputs.should_deploy == 'true' }}
+    steps:
+      - name: Confirm Deployment
+        run: echo "Changes detected, deployment initiated."
