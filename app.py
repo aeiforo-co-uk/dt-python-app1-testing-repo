@@ -24,7 +24,7 @@ def swagger_spec():
     return jsonify({
         "swagger": "2.0",
         "info": {
-            "title": "Swagger API Teting",
+            "title": "Swagger APIs Teting",
             "version": "v1.0.1"
         },
         "schemes": ["http", "https"],
