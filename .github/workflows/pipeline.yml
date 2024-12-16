@@ -18,11 +18,3 @@ jobs:
     permissions:
       contents: write
 
-  check-and-deploy:
-    name: Check Deployment Status
-    needs: call-reusable-workflow
-    runs-on: ubuntu-latest
-    if: ${{ needs.call-reusable-workflow.outputs.should_deploy == 'false' }}
-    steps:
-      - name: Confirm Deployment
-        run: echo "Changes detected, deployment initiated."
