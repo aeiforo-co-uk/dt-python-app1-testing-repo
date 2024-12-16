@@ -12,7 +12,7 @@ jobs:
     with:
       repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
       deploy_env: 'staging'
-      build_artifacts: true
+      build_artifacts: false
       python_version: '3.9'
     secrets: inherit
     permissions:
