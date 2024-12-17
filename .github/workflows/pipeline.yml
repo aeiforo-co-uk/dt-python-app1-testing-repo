@@ -4,7 +4,7 @@ name: Call Python CI/CD Pipeline
 on:
   push:
     branches:
-      - development  # Automatically trigger on pushes to the development branch
+      - development  # Automatically trigger on pushes to the development branchs
      
 env:
   PYTHON_VERSION: '3.9'
