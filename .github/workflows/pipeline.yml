@@ -17,7 +17,7 @@ jobs:
       repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
       deploy_env: 'dev'     
       build_artifacts: false
-      # PYTHON_VERSION: '3.9'
+      python_version: '3.9'
     secrets: inherit
     permissions:
       contents: write
