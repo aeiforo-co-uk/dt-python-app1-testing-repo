@@ -16,10 +16,10 @@ jobs:
   call-reusable-workflow:
     name: Reuse Python Pipeline
     uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python-pipeline.yml@main
-    with:
-      repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
-      deploy_env: 'dev'     
-      build_artifacts: false
+    # with:
+    #   repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
+    #   deploy_env: 'dev'     
+    #   build_artifacts: false
     secrets: inherit
     permissions:
       contents: write
