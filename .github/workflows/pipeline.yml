@@ -7,16 +7,19 @@ on:
       - development  # Automatically trigger on pushes to the development branch
      
 env:
+  REPO_NAME: 'aeiforo-co-uk/dt-python-app1-testing-repo'
+  DEPLOY_ENV: 'dev'
+  BUILD_ARTIFACTS: true
   PYTHON_VERSION: '3.9'
+  
 jobs:
   call-reusable-workflow:
     name: Reuse Python Pipeline
     uses: aeiforo-co-uk/dt-module-python-pipeline-repo/.github/workflows/python-pipeline.yml@main
     with:
       repo_name: 'aeiforo-co-uk/dt-python-app1-testing-repo'
-      deploy_env: 'staging'       # Example environment
+      deploy_env: 'dev'     
       build_artifacts: false
-      # python_version: '3.9'       # Example version
     secrets: inherit
     permissions:
       contents: write
