@@ -10,7 +10,7 @@ def add():
     b = request.args.get('b', type=float)
     if a is None or b is None:
         return jsonify({"error": "Missing parameters a or b"}), 400
-    result = calculator.add(a, b)  # Example usage of your artifact
+    result = calculator.add(a, b)  # Example usage of your artifacts
     return jsonify({"result": result})
 
 if __name__ == "__main__":
